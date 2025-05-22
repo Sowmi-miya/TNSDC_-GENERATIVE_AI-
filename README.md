@@ -1,76 +1,92 @@
 # YouTube Video Summarizer
 
-This is a Python application that allows you to summarize the content of a YouTube video using OpenAI's GPT-3.5 language model and Langchain. The application get the transcription provided by YouTube, chunks the Transcription with Langchain and generates a summary in the language of the youtube video.
+A Python Streamlit web app that summarizes YouTube video content by extracting the transcript and generating a concise summary using a local Hugging Face transformer model.
 
-## Features
-- Get the Transcription from Youtube
-- Chunks the transcriptions with Langchain
-- Summarizes transcribed text using OpenAI's GPT-3.5 model
-- Built with Streamlit for an easy-to-use web interface
+Features
+Extracts transcripts directly from YouTube videos via youtube-transcript-api
 
-## Prerequisites
+Processes transcript text with chunking for better summarization
 
-Before you begin, ensure you have installed the following:
+Summarizes text using Hugging Face's DistilBART summarization model locally (no OpenAI API required)
 
-- Python 3.6 or above
-- [Streamlit](https://streamlit.io/)
-- [PyTube](https://pytube.io/en/latest/)
-- [OpenAI](https://beta.openai.com/docs/developer-quickstart/)
-- [python-dotenv](https://pypi.org/project/python-dotenv/)
-- [youtube-transcript-api](https://pypi.org/project/youtube-transcript-api/)
-- [Langchain](https://pypi.org/project/langchain/)
+Simple and interactive UI built with Streamlit for easy input and summary display
 
-## Installation 
+Supports multi-language transcript extraction based on YouTube video captions
 
-1. Clone this repository:
-```bash
-git clone https://github.com/DevRico003/youtube_summarizer
-```
-2. Change into the cloned repository:
-```bash
-cd youtube_summarizer
-```
-3. Install all necessary packages:
-```bash
+Prerequisites
+Make sure you have the following installed:
+
+Python 3.7 or above
+
+Streamlit
+
+youtube-transcript-api
+
+transformers
+
+torch or tensorflow (for model backend)
+
+python-dotenv (for environment variable management)
+
+Installation
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/yourrepo.git
+cd yourrepo
+Create and activate a virtual environment (recommended):
+
+bash
+Copy
+Edit
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+Install dependencies:
+
+bash
+Copy
+Edit
 pip install -r requirements.txt
-```
-4. Create a `.env` directory in your home directory (or any directory of your choice), and create in the directory `.env` a file called `openai_api` and add your OpenAI API Key:
-```bash
-OPENAI_API_KEY=your_openai_api_key
-```
-5. Change the `env_path` variable in the Python script to match the path of your `.env` file.
+Create a .env file in the project root (optional):
 
-## Usage
+You can add any environment variables you need here (e.g., API keys if used later).
 
-1. Run the script:
-```bash
+Usage
+Run the app:
+
+bash
+Copy
+Edit
 streamlit run app.py
-```
-2. Once the web application starts, open it in your web browser.
+Open the URL shown in your browser (usually http://localhost:8501).
 
-3. Enter the link of the YouTube video you want to summarize in the provided text input.
+Enter the YouTube video URL or video ID.
 
-4. Click the "Start" button to begin the summarization process.
+Click Start to fetch the transcript and generate a summary.
 
-   - The application will get the Transcription from Youtube
-   - It will then use GPT-3.5 and Langchain to generate a summary.
-   - The generated summary will be displayed on the web page in the language of the youtube video.
+View the summarized content displayed on the page.
 
-5. The summary will be presented in the form of an informative and factual overview of the video's content, including bullet points if possible. It will also include an introduction and conclusion phrase.
+Example
+Input:
+https://www.youtube.com/watch?v=DPmtnb8NBog
 
-## Example
-### Insert Youtube link, choose the language and press start
-![Example english](1.png)
-### Result
-![Example english](2.png)
-## Disclaimer
+Output:
+A clear, concise summary of the video transcript with introduction, bullet points, and conclusion.
 
-Please note that this application relies on the OpenAI GPT-3.5 language model, and its performance and results are subject to the capabilities of the model and the quality of the provided data. The generated summaries may not always be perfect and may require manual editing for accuracy.
+Notes
+The summarization model runs locally, so no API key or billing required.
 
-## Contributing
+Transcript availability depends on the video's caption settings.
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+The model and pipeline use PyTorch or TensorFlow — ensure you have one installed.
 
-## License
+Contributing
+Feel free to open issues or submit pull requests to improve the app!
 
-Distributed under the MIT License. See `LICENSE` for more information.
+License
+Distributed under the MIT License. See LICENSE for details.
